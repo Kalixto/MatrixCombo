@@ -15,8 +15,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     
     // defino la variable donde guardo el jugador seleccionado
     var jugadorSeleccionado: Jugadores!
-    var partidaSeleccionada: Partidas!
-    var partidaCreada: Partidas!
+    var partidaComboSeleccionada: PartidasCombo!
+    var matrizComboCreada: MatricesCombo!
     
     func conexion() -> NSManagedObjectContext {
         let delegate = UIApplication.shared.delegate as! AppDelegate
@@ -72,7 +72,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
             jugadorSeleccionado = jugador
             pintarJugador(jugador: self.jugadorSeleccionado)
         } catch let error as NSError {
-            print("No pude recuperar datos \(error), \(error.userInfo)")
+            print("No pude recuperar datos de jugador: \(nombreJugador) Error: \(error), \(error.userInfo)")
         }
     }
     
@@ -101,7 +101,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
             self.primerJugador = true
             return
         }  else {
-            // La info del Jugadores.Ordenador y la del nuevo Jugador ya están guardadas
+            // La info del Ordenador y la del nuevo Jugador ya están guardadas
             let contexto = conexion()
             let peticion = NSFetchRequest<Jugadores>(entityName: "Jugadores")
             let ordenador = "Ordenador"
@@ -174,12 +174,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     // Control de flujo
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "jugarSegue" {
-            let objJugar: JugarViewController =  segue.destination as! JugarViewController
-            objJugar.numCasillasOriginal = numCasillas
+        if segue.identifier == "eleccionTipo" {
+            let objJugar: ElegirTipoViewController =  segue.destination as! ElegirTipoViewController
+            objJugar.numCasillasOriginal = numCasillas            
             objJugar.jugadorSeleccionado = jugadorSeleccionado
-  //          objJugar.matrix = matrix
-            objJugar.partidaSeleccionada = partidaSeleccionada
+            objJugar.partidaComboSeleccionada = partidaComboSeleccionada
         } else if segue.identifier == "ultimaPartidaSegue" {
                 let objUltimaPartida: UltimaPartidaViewController =  segue.destination as! UltimaPartidaViewController
                 objUltimaPartida.jugadorSeleccionado = jugadorSeleccionado
@@ -211,8 +210,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     @IBAction func pulsaUltimaPartida2(_ sender: Any) {
         // Compruebo que hay Partidas sin finalizar del Jugador
         let contexto = conexion()
-        let peticion = NSFetchRequest<Partidas>(entityName: "Partidas")
-        peticion.predicate = NSPredicate(format: "idJugador == %@ && estado < %@", jugadorSeleccionado.idJugador!, "2")
+        let peticion = NSFetchRequest<PartidasCombo>(entityName: "PartidasCombo")
+        peticion.predicate = NSPredicate(format: "idJugador == %@ && estado == %@", jugadorSeleccionado.idJugador!, "1")
         do {
             let resultados = try contexto.fetch(peticion)
             if resultados.count > 0 {
@@ -229,51 +228,82 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         }
     }
     @IBAction func NuevaPartida2(_ sender: Any) {
-        let a: Int? = Int(textoCasillasDefecto2.text!)
-        if (a != nil) {
-            numCasillas = a!
-        } else {
-            textoCasillasDefecto2.text = "Número"
-            return
-        }
-        crearPartida()
-        partidaSeleccionada = partidaCreada
-        let contexto = conexion()
-        let partidas = jugadorSeleccionado.partidasTotal + 1
-        jugadorSeleccionado.partidasTotal = partidas
-//        idJugadorJugar = jugadorSeleccionado.idJugador
+        self.performSegue(withIdentifier: "eleccionTipo", sender: numCasillas)
+    }
+    // Módulo MatricesCombo
+    var matrizAGrabar: MatricesCombo!
+    var cantidadMatrices: Int = 0
+    var codigoMatrizCreada: Int32 = 0
+    var numCasillasNueva: Int32 = 0
+    var modoDeJuego: String = "Libre"
+    var tipoDePartida: Int16 = 5
+    var matrixPartidaOriginal: [Int] = [Int]()     // Tiene los valores de TODAS LAS CELDAS ORIGINALES
+    // Buscar el codigoMatriz nuevo
+    func buscarCodigoMatrizCombo() -> Int32{
         do {
-            try contexto.save()
+            let contexto = conexion()
+            let peticion = NSFetchRequest<MatricesCombo>(entityName: "MatricesCombo")
+            let orderByCodigoMatriz = NSSortDescriptor(key: "codigoMatriz", ascending: false)
+            peticion.sortDescriptors = [orderByCodigoMatriz]
+            peticion.fetchLimit = 1
+            let resultados = try contexto.fetch(peticion)
+            return resultados[0].codigoMatriz + 1
         } catch let error as NSError {
-            print("no puedo actualizar número de partidas del jugador", error)
+            print("No pude recuperar datos \(error), \(error.userInfo)")
         }
-        self.performSegue(withIdentifier: "jugarSegue", sender: numCasillas)
+        print("No pude recuperar MatricesCombo para buscar el código siguiente")
+        return 1
     }
-    func crearPartida() {
+    // Funciones para pasar de String a Matriz y viceversa
+    var matrizString: String = ""
+    var matrizDeVuelta: [Int] = [Int]()
+    func cambiarMatrizAString(matrizAString: [Int]) -> String {
+        matrizString = ""
+        for i in 0 ... matrizAString.count - 1 {
+            matrizString = matrizString + String(describing: matrizAString[i])
+        }
+        return matrizString
+    }
+    func cambiarStringAMatriz(stringAMatriz: String) -> [Int] {
+        matrizDeVuelta.removeAll()
+        for c in stringAMatriz {
+            matrizDeVuelta.append(Int(String(c))!)
+        }
+        return matrizDeVuelta
+    }
+    func pintarMatricesCombo() {
         let contexto = conexion()
-        // Leo cuántas partidas hay ya y sumo 1 al idPartida
-        let peticion = NSFetchRequest<Partidas>(entityName: "Partidas")
-        peticion.predicate = NSPredicate(format: "idPartida != nil")
-        cantidadPartidas = try! contexto.count(for: peticion)
-        idPartidaCreada = cantidadPartidas + 1
-        // Inserto una fila en Partidas con el idJugador y a cero resto
-        let entidad = NSEntityDescription.entity(forEntityName: "Partidas", in: contexto)!
-        partidaCreada = Partidas(entity: entidad,insertInto: contexto)
-        partidaCreada.idPartida = Int32(idPartidaCreada)
-        partidaCreada.fechaInicial = NSDate() as Date
-        partidaCreada.idJugador = jugadorSeleccionado.idJugador
-        partidaCreada.estado = 0
-        partidaCreada.versionActual = 0
-        partidaCreada.idMatriz = 0
-        partidaCreada.filasJugador = 0
-        partidaCreada.filasOrdenador = 0
-        partidaCreada.numCasillasOriginal = Int16(numCasillas)
-        partidaCreada.paresJugador = 0
-        partidaCreada.paresOrdenador = 0
-        partidaCreada.puntosJugador = 0
-        partidaCreada.puntosOrdenador = 0
-        try! contexto.save()
+        let peticion = NSFetchRequest<MatricesCombo>(entityName: "MatricesCombo")
+        let orderByCodigoMatriz = NSSortDescriptor(key: "codigoMatriz", ascending: true)
+        peticion.sortDescriptors = [orderByCodigoMatriz]
+        let resultados = try! contexto.fetch(peticion)
+        for res in resultados {
+            print(" matrizCombo: \(res)")
+        }
+        if resultados.count == 0 {
+            print("Error al leer MatricesCombo:")
+        }
     }
+    
+    
+
+     /*
+     func crearTiposDePartida() {
+     tiposDePartida.append([1,1,90,90])          // tipoJuego = "facilon"
+     tiposDePartida.append([2,1,180,180])          // tipoJuego = "suave"
+     tiposDePartida.append([3,1,270,270])          // tipoJuego = "regu"
+     tiposDePartida.append([4,1,666,666])          // tipoJuego = "desafío"
+     tiposDePartida.append([5,4,66,666])          // tipoJuego = "ikea"
+     tiposDePartida.append([6,4,100,1001])          // tipoJuego = "purgatorio"
+     tiposDePartida.append([7,4,166,1666])          // tipoJuego = "tinieblas"
+     tiposDePartida.append([8,4,200,2001])          // tipoJuego = "infierno 1"
+     tiposDePartida.append([9,4,333,3333])          // tipoJuego = "infierno 2"
+     tiposDePartida.append([10,4,500,5005])          // tipoJuego = "infierno 3"
+     }
+     */
+     
+    
+    
     
     // Variables
     
@@ -294,6 +324,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     var cantidadPartidas: Int = 0
 //    var idJugadorJugar: String?
     var idPartidaCreada: Int = 0
+    var idPartidaComboCreada: Int32 = 0
 //    var nuevaPartida: Bool = false
     
 }

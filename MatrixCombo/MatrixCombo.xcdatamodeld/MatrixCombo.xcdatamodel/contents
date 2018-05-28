@@ -1,35 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CaminoOrdenador" representedClassName="CaminoOrdenador" syncable="YES" codeGenerationType="class">
+        <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="jugadaOrdenador" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numJugadaOrdenador" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="CaminosSolucion" representedClassName="CaminosSolucion" syncable="YES" codeGenerationType="class">
+        <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="jugada" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jugador" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numJugada" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="Celdas" representedClassName="Celdas" syncable="YES" codeGenerationType="class">
         <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numCelda" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="valorCelda" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="CeldasString" representedClassName="CeldasString" syncable="YES" codeGenerationType="class">
+        <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stringMatriz" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Jugadores" representedClassName="Jugadores" syncable="YES" codeGenerationType="class">
         <attribute name="columnasTotal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="fechaInicio" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="filasTotal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="idJugador" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mayorGrupo" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numCasillasDefecto" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="paresTotal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="partidasTotal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="passJugador" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="puntosTotal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="LogFilasBorradas" representedClassName="LogFilasBorradas" syncable="YES" codeGenerationType="class">
+        <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="filaBorrada" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numFilasBorradas" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numJugada" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="LogGrupos" representedClassName="LogGrupos" syncable="YES" codeGenerationType="class">
         <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numCelda1" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numCelda2" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numGrupo" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numParejas" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numSubgrupo" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="puntosJugada" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="valorCelda1" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="valorCelda2" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-    </entity>
-    <entity name="LogGruposCabecera" representedClassName="LogGruposCabecera" syncable="YES" codeGenerationType="class">
-        <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="numGrupo" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="numParejas" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="puntosJugada" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="LogMatriz" representedClassName="LogMatriz" syncable="YES" codeGenerationType="class">
         <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -57,6 +77,22 @@
         <attribute name="puntosOrdenador" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="MatricesCombo" representedClassName="MatricesCombo" syncable="YES" codeGenerationType="class">
+        <attribute name="celdasStringFinal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="celdasStringInicial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="estado" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="filasBlanco" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="filasBlancoAntes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="jugador" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mayorGrupo" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="modoJuego" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numCasillas" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="pares" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="puntos" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tipoPartida" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="Partidas" representedClassName="Partidas" syncable="YES" codeGenerationType="class">
         <attribute name="columnasJugador" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="columnasOrdenador" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -75,13 +111,42 @@
         <attribute name="puntosOrdenador" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="versionActual" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="PartidasCombo" representedClassName="PartidasCombo" syncable="YES" codeGenerationType="class">
+        <attribute name="celdasFinal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="celdasInicial" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="codigoPartida" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="estado" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="fechaFinal" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fechaInicio" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="filasBlancoJugador" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="filasBlancoOrdenador" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="finalGlorioso" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="idJugador" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iteraciones" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mayorGrupoJugador" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mayorGrupoOrdenador" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="modoJuego" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numCasillasOriginal" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="paresJugador" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="paresOrdenador" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="puntosJugador" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="puntosOrdenador" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tipoPartida" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="CaminoOrdenador" positionX="-27" positionY="135" width="128" height="105"/>
+        <element name="CaminosSolucion" positionX="-9" positionY="153" width="128" height="120"/>
         <element name="Celdas" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Jugadores" positionX="-54" positionY="18" width="128" height="180"/>
+        <element name="CeldasString" positionX="-27" positionY="135" width="128" height="75"/>
+        <element name="Jugadores" positionX="-54" positionY="18" width="128" height="195"/>
+        <element name="LogFilasBorradas" positionX="-27" positionY="135" width="128" height="105"/>
+        <element name="LogGrupos" positionX="-18" positionY="144" width="128" height="180"/>
         <element name="LogMatriz" positionX="-36" positionY="90" width="128" height="180"/>
         <element name="Matrices" positionX="-18" positionY="135" width="128" height="240"/>
+        <element name="MatricesCombo" positionX="-27" positionY="135" width="128" height="255"/>
         <element name="Partidas" positionX="0" positionY="171" width="128" height="285"/>
-        <element name="LogGruposCabecera" positionX="-27" positionY="135" width="128" height="105"/>
-        <element name="LogGrupos" positionX="-18" positionY="144" width="128" height="150"/>
+        <element name="PartidasCombo" positionX="-18" positionY="144" width="128" height="375"/>
     </elements>
 </model>

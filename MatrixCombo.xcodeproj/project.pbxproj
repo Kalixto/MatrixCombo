@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A01479482058536700F0E048 /* matrixCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01479472058536700F0E048 /* matrixCollectionViewCell.swift */; };
 		A039F54E2059A9B9008221EC /* UltimaPartidaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A039F54D2059A9B9008221EC /* UltimaPartidaViewController.swift */; };
+		A03FF1C620AC987100D54C8B /* FinalPartidaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03FF1C520AC987000D54C8B /* FinalPartidaViewController.swift */; };
 		A06A91302056EDE7006385D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A912F2056EDE7006385D5 /* AppDelegate.swift */; };
 		A06A91322056EDE7006385D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A91312056EDE7006385D5 /* ViewController.swift */; };
 		A06A91352056EDE8006385D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A06A91332056EDE8006385D5 /* Main.storyboard */; };
@@ -18,6 +19,9 @@
 		A06A91482056EDE8006385D5 /* MatrixComboTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A91472056EDE8006385D5 /* MatrixComboTests.swift */; };
 		A06A91532056EDE8006385D5 /* MatrixComboUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A91522056EDE8006385D5 /* MatrixComboUITests.swift */; };
 		A06A91612056F583006385D5 /* JugarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06A91602056F583006385D5 /* JugarViewController.swift */; };
+		A0919A2E2067C6FC00DC1C8D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0919A2C2067C6FB00DC1C8D /* Crashlytics.framework */; };
+		A0919A2F2067C6FC00DC1C8D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0919A2D2067C6FB00DC1C8D /* Fabric.framework */; };
+		A0AFCD8420AB47D900C28CF8 /* ElegirTipoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AFCD8320AB47D900C28CF8 /* ElegirTipoViewController.swift */; };
 		E9BA2FC4205AD64900531F0F /* celdaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2FC3205AD64900531F0F /* celdaCollectionViewCell.swift */; };
 		E9BA2FC6205AD6E000531F0F /* EstadisticasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BA2FC5205AD6E000531F0F /* EstadisticasViewController.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +46,7 @@
 /* Begin PBXFileReference section */
 		A01479472058536700F0E048 /* matrixCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = matrixCollectionViewCell.swift; sourceTree = "<group>"; };
 		A039F54D2059A9B9008221EC /* UltimaPartidaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimaPartidaViewController.swift; sourceTree = "<group>"; };
+		A03FF1C520AC987000D54C8B /* FinalPartidaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalPartidaViewController.swift; sourceTree = "<group>"; };
 		A06A912C2056EDE7006385D5 /* MatrixCombo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatrixCombo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A06A912F2056EDE7006385D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A06A91312056EDE7006385D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +62,9 @@
 		A06A91522056EDE8006385D5 /* MatrixComboUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixComboUITests.swift; sourceTree = "<group>"; };
 		A06A91542056EDE8006385D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A06A91602056F583006385D5 /* JugarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JugarViewController.swift; sourceTree = "<group>"; };
+		A0919A2C2067C6FB00DC1C8D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		A0919A2D2067C6FB00DC1C8D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		A0AFCD8320AB47D900C28CF8 /* ElegirTipoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegirTipoViewController.swift; sourceTree = "<group>"; };
 		E9BA2FC3205AD64900531F0F /* celdaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = celdaCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9BA2FC5205AD6E000531F0F /* EstadisticasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstadisticasViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0919A2E2067C6FC00DC1C8D /* Crashlytics.framework in Frameworks */,
+				A0919A2F2067C6FC00DC1C8D /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +103,8 @@
 				A06A91462056EDE8006385D5 /* MatrixComboTests */,
 				A06A91512056EDE8006385D5 /* MatrixComboUITests */,
 				A06A912D2056EDE7006385D5 /* Products */,
+				A0919A2C2067C6FB00DC1C8D /* Crashlytics.framework */,
+				A0919A2D2067C6FB00DC1C8D /* Fabric.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,9 +123,11 @@
 			children = (
 				A06A912F2056EDE7006385D5 /* AppDelegate.swift */,
 				A06A91312056EDE7006385D5 /* ViewController.swift */,
+				A0AFCD8320AB47D900C28CF8 /* ElegirTipoViewController.swift */,
 				A06A91602056F583006385D5 /* JugarViewController.swift */,
 				A039F54D2059A9B9008221EC /* UltimaPartidaViewController.swift */,
 				E9BA2FC5205AD6E000531F0F /* EstadisticasViewController.swift */,
+				A03FF1C520AC987000D54C8B /* FinalPartidaViewController.swift */,
 				A01479472058536700F0E048 /* matrixCollectionViewCell.swift */,
 				E9BA2FC3205AD64900531F0F /* celdaCollectionViewCell.swift */,
 				A06A91332056EDE8006385D5 /* Main.storyboard */,
@@ -153,6 +167,7 @@
 				A06A91282056EDE7006385D5 /* Sources */,
 				A06A91292056EDE7006385D5 /* Frameworks */,
 				A06A912A2056EDE7006385D5 /* Resources */,
+				A0919A2B2067C66100DC1C8D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -206,7 +221,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = neteamador;
 				TargetAttributes = {
 					A06A912B2056EDE7006385D5 = {
@@ -272,14 +287,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A0919A2B2067C66100DC1C8D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f5faee235d0f3c6555bade8af74f953b12455b14 e77375d8eb9a4f75de1db587f816266accb63c6576ed2f049ed580c44efc3d2e";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A06A91282056EDE7006385D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0AFCD8420AB47D900C28CF8 /* ElegirTipoViewController.swift in Sources */,
 				A06A91612056F583006385D5 /* JugarViewController.swift in Sources */,
 				A06A91322056EDE7006385D5 /* ViewController.swift in Sources */,
 				A06A91382056EDE8006385D5 /* MatrixCombo.xcdatamodeld in Sources */,
+				A03FF1C620AC987100D54C8B /* FinalPartidaViewController.swift in Sources */,
 				E9BA2FC4205AD64900531F0F /* celdaCollectionViewCell.swift in Sources */,
 				A06A91302056EDE7006385D5 /* AppDelegate.swift in Sources */,
 				A039F54E2059A9B9008221EC /* UltimaPartidaViewController.swift in Sources */,
@@ -353,6 +386,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -360,6 +394,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -410,6 +445,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -417,6 +453,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -452,7 +489,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L7YW6SKU3Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MatrixCombo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.eamador.MatrixCombo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -467,7 +509,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L7YW6SKU3Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MatrixCombo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.eamador.MatrixCombo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
