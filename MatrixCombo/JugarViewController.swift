@@ -256,6 +256,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
  //       matrizComboPartida.celdasString = cambiarMatrizAString(matrizAString: matrixPartida)
         matrizComboPartida.celdasStringInicial = cambiarMatrizAString(matrizAString: matrixPartida)
         matrizComboPartida.celdasStringFinal = ""
+        matrizComboPartida.caminoVersion = ""
         matrizComboPartida.pares = 0
         matrizComboPartida.puntos = 0
         matrizComboPartida.filasBlanco = 0
@@ -271,6 +272,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
  //       matrizComboPartida1.celdasString = cambiarMatrizAString(matrizAString: matrixPartida)
         matrizComboPartida1.celdasStringInicial = cambiarMatrizAString(matrizAString: matrixPartida)
         matrizComboPartida1.celdasStringFinal = ""
+        matrizComboPartida1.caminoVersion = ""
         matrizComboPartida1.pares = 0
         matrizComboPartida1.puntos = 0
         matrizComboPartida1.filasBlanco = 0
@@ -286,6 +288,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
  //       matrizComboPartida2.celdasString = cambiarMatrizAString(matrizAString: matrixPartida)
         matrizComboPartida2.celdasStringInicial = cambiarMatrizAString(matrizAString: matrixPartida)
         matrizComboPartida2.celdasStringFinal = ""
+        matrizComboPartida2.caminoVersion = ""
         matrizComboPartida2.pares = 0
         matrizComboPartida2.puntos = 0
         matrizComboPartida2.filasBlanco = 0
@@ -301,6 +304,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
   //      matrizComboPartida12.celdasString = cambiarMatrizAString(matrizAString: matrixPartida)
         matrizComboPartida12.celdasStringInicial = cambiarMatrizAString(matrizAString: matrixPartida)
         matrizComboPartida12.celdasStringFinal = ""
+        matrizComboPartida12.caminoVersion = ""
         matrizComboPartida12.pares = 0
         matrizComboPartida12.puntos = 0
         matrizComboPartida12.filasBlanco = 0
@@ -334,6 +338,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         matrixComboSeleccionada = matrizSel[0]
  //       matrixComboSeleccionada.celdasString = cambiarMatrizAString(matrizAString: matrizGuardar)
         matrixComboSeleccionada.celdasStringFinal = cambiarMatrizAString(matrizAString: matrizGuardar)
+        matrixComboSeleccionada.caminoVersion = cambiarCaminosAString(caminos: camino)
         matrixComboSeleccionada.estado = estado
         matrixComboSeleccionada.pares = pares
         matrixComboSeleccionada.puntos = puntos
@@ -407,6 +412,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         }
         return matrixVersion
     }
+    
     func leerCaminosSolucion(codigoMatriz: Int16, jugador: String, version: Int16) -> [[[Int]]]{
         // Leo de CaminosSolucion y devuelvo caminosJugador
         // Borro el caminosJugador
@@ -578,8 +584,10 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
             // Debemos cargar el log que en este caso está en CaminosSolucion
             // Leo de CaminosSolucion y devuelvo caminosJugador
             codigoMatrizActual = partidaComboSeleccionada.codigoMatriz
-            caminosJugador = leerCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), jugador: partidaComboSeleccionada.idJugador!, version: partidaComboSeleccionada.version)
-            caminosTotalOrdenador = leerCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), jugador: "Ordenador", version: partidaComboSeleccionada.version)
+            caminosJugador = cambiarStringACaminos(caminoString: partidaComboSeleccionada.caminoFinalJugador!)
+            caminosTotalOrdenador = cambiarStringACaminos(caminoString: partidaComboSeleccionada.caminoFinalOrdenador!)
+  //          caminosJugador = leerCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), jugador: partidaComboSeleccionada.idJugador!, version: partidaComboSeleccionada.version)
+  //          caminosTotalOrdenador = leerCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), jugador: "Ordenador", version: partidaComboSeleccionada.version)
         }
         // Inicializo
         numCasillasOriginal = Int(partidaComboSeleccionada.numCasillasOriginal)
@@ -639,6 +647,48 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
         }
         return matrizDeVuelta
     }
+    func cambiarCaminosAString(caminos: [[[Int]]]) -> String {
+        // Recibo caminosJugador y grabo en CaminosSolucion
+        // Separo los Grupos del Camino con "*"
+        caminoString = ""
+        for grupos in caminos {
+            for paresOrden in grupos {
+                caminoString = caminoString + String(describing: paresOrden[0]) + ","
+                caminoString = caminoString + String(describing: paresOrden[1]) + ","
+            }
+            caminoString = caminoString + "*,"
+        }
+        // Debería borrar los dos últimos caracteres: "*,"
+        // Ya tengo en caminoString el camino Solución
+        // -> para PartidasCombo y MatricesCombo
+        return caminoString
+    }
+    func cambiarStringACaminos(caminoString: String) -> [[[Int]]] {
+        caminosJugador.removeAll()
+        jugadaInterEnteros.removeAll()
+        jugadasEnteros.removeAll()
+        jugadasString = caminoString.components(separatedBy: ",")
+        for c in jugadasString {
+            if c.count > 0 {    // Esto es para descartar el último ","
+                if c != "*" {
+                    jugadaInterEnteros.append(Int(String(c))!)
+                } else {            // Ya tengo un grupo de pares de una jugada
+                    numeroPares = 0
+                    while numeroPares < jugadaInterEnteros.count {
+                        parCeldas.removeAll()
+                        parCeldas.append(jugadaInterEnteros[numeroPares])
+                        parCeldas.append(jugadaInterEnteros[numeroPares + 1])
+                        jugadasEnteros.append(parCeldas)
+                        numeroPares = numeroPares + 2
+                    }
+                    caminosJugador.append(jugadasEnteros)
+                    jugadaInterEnteros.removeAll()
+                    jugadasEnteros.removeAll()
+                }
+            }
+        }
+        return caminosJugador
+    }
 
     // Ver si Fin de matrix
     @IBAction func verificarSiQuedan2(_ sender: Any) {
@@ -653,7 +703,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
              actualizar la Partida con versionActual + 1 y los puntos/pares/filas/columnas del Jugador
              */
             guardarMatrizComboVersion(matrizGuardar: matrixPartida, jugador: partidaComboSeleccionada.idJugador!, version: versionActual, estado: 2, pares: paresVersion, puntos: puntosVersion, filas: filasVersion, mayor: grupoMayorVersion, camino: caminosJugador)
-            guardarCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), version: versionActual, caminos: caminosJugador, jugador: partidaComboSeleccionada.idJugador!)
+  //          guardarCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), version: versionActual, caminos: caminosJugador, jugador: partidaComboSeleccionada.idJugador!)
             // Compruebo si es la última vuelta por la version y el tipoJuego
             let tipoJ = partidaComboSeleccionada.tipoPartida
             if tipoJ < 5 {
@@ -765,6 +815,8 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
             if estado == 2 {
                 partidaCreada.celdasFinal = cambiarMatrizAString(matrizAString: matrizGuardar)
             }
+            partidaCreada.caminoFinalJugador = cambiarCaminosAString(caminos: caminosJugador)
+            partidaCreada.caminoFinalOrdenador = cambiarCaminosAString(caminos: caminosTotalOrdenador)
             partidaCreada.puntosJugador = puntosJugador
             partidaCreada.paresJugador = paresJugador
             partidaCreada.filasBlancoJugador = Int16(filasJugador)
@@ -1095,7 +1147,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     @IBAction func irAtras2(_ sender: Any) {
         let numDePartidaJugada = numDePartidas + 1
         guardarMatrizComboVersion(matrizGuardar: matrixPartida, jugador: jugadorSeleccionado.idJugador!, version: versionActual, estado: 1, pares: paresVersion, puntos: puntosVersion, filas: filasVersion, mayor: grupoMayorVersion, camino: caminosJugador)
-        guardarCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), version: versionActual, caminos: caminosJugador, jugador: jugadorSeleccionado.idJugador!)
+  //      guardarCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), version: versionActual, caminos: caminosJugador, jugador: jugadorSeleccionado.idJugador!)
         guardarPartidaCombo(version: versionActual, estado: 1, matrizGuardar: matrixPartida)
         guardarJugador()
         self.performSegue(withIdentifier: "volverDeJugar", sender: numDePartidaJugada)
@@ -1471,7 +1523,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
                 puntosOrdenador = puntosOrdenador + Int64(puntosVersionOrd)
                 paresOrdenador = paresOrdenador + Int64(paresVersionOrd)
                 filasOrdenador = filasOrdenador + Int64(filasVersionOrd)
-                guardarCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), version: versionActual, caminos: caminosTotalOrdenador, jugador: "Ordenador")
+         //       guardarCaminosSolucion(codigoMatriz: Int16(codigoMatrizActual), version: versionActual, caminos: caminosTotalOrdenador, jugador: "Ordenador")
             }
             return Int64(puntosVersionOrd)
         }
@@ -1602,6 +1654,7 @@ class JugarViewController: UIViewController, UICollectionViewDelegateFlowLayout,
     }
     // ############################# Operaciones de lectura/escritura de CaminosOrdenador <--> caminoTotalOrdenador
     var jugadaInter: String = ""
+    var caminoString: String = ""
     var jugadasString: [String] = [String]()
     var jugadaInterEnteros: [Int] = [Int]()
     var jugadasEnteros: [[Int]] = [[Int]]()

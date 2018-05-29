@@ -78,6 +78,7 @@
         <attribute name="version" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="MatricesCombo" representedClassName="MatricesCombo" syncable="YES" codeGenerationType="class">
+        <attribute name="caminoVersion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="celdasStringFinal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="celdasStringInicial" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -112,6 +113,8 @@
         <attribute name="versionActual" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="PartidasCombo" representedClassName="PartidasCombo" syncable="YES" codeGenerationType="class">
+        <attribute name="caminoFinalJugador" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="caminoFinalOrdenador" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="celdasFinal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="celdasInicial" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="codigoMatriz" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -145,8 +148,8 @@
         <element name="LogGrupos" positionX="-18" positionY="144" width="128" height="180"/>
         <element name="LogMatriz" positionX="-36" positionY="90" width="128" height="180"/>
         <element name="Matrices" positionX="-18" positionY="135" width="128" height="240"/>
-        <element name="MatricesCombo" positionX="-27" positionY="135" width="128" height="255"/>
+        <element name="MatricesCombo" positionX="-27" positionY="135" width="128" height="270"/>
         <element name="Partidas" positionX="0" positionY="171" width="128" height="285"/>
-        <element name="PartidasCombo" positionX="-18" positionY="144" width="128" height="375"/>
+        <element name="PartidasCombo" positionX="-18" positionY="144" width="128" height="405"/>
     </elements>
 </model>
